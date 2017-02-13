@@ -30,9 +30,19 @@ public class UserResource {
         LOGGER.info("Searching for users starting with {}", usernamePrefix);
         List<String> list = newArrayList("user@email.com", "user2@email.com");
 
+        //getting info about user account
         GoogleProfile profile = getGoogleProfile();
         LOGGER.info("Google Profile Data {}", OM.writerWithDefaultPrettyPrinter().writeValueAsString(profile));
         list.add(profile.getEmail());
+        list.add(profile.getId());
+        list.add(profile.getFamilyName());
+        list.add(profile.getGender());
+        list.add(profile.getGivenName());
+        list.add(profile.getHd());
+        list.add(profile.getLink());
+        list.add(profile.getLocale());
+        list.add(profile.getName());
+        list.add(profile.getPicture());
 
         LOGGER.info("Returning users {}", list);
         return list;
