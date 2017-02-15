@@ -6,10 +6,11 @@
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
     <sec:http use-expressions="true" entry-point-ref="clientAuthenticationEntryPoint">
         <sec:http-basic/>
-        <sec:logout/>
+        <sec:logout logout-success-url="/" logout-url="/j_spring_security_logout"/>
+        <!--<sec:logout logout-url="/login.jsp"/>-->
         <sec:anonymous enabled="false"/>
 
-        <sec:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
+        <sec:intercept-url pattern="/security_pages/**" access="isFullyAuthenticated()"/>
 
         <!-- This is the crucial part and the wiring is very important -->
         <!-- 
@@ -62,4 +63,21 @@
             </sec:user-service>
         </sec:authentication-provider>
     </sec:authentication-manager>
+
+    <b:bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+        <b:constructor-arg index="0" value="/login.jsp"/>
+        <b:constructor-arg index="1">
+            <b:list>
+                <b:ref local="securityContextLogoutHandler"/>
+                <b:ref local="cookieClearingLogoutHandler"/>
+            </b:list>
+        </b:constructor-arg>
+    </b:bean>
+
+    <b:bean id="securityContextLogoutHandler" class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+
+    <b:bean id="cookieClearingLogoutHandler" class="org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler">
+        <b:constructor-arg index="0" value="JSESSIONID"/>
+    </b:bean>
+
 </b:beans>
