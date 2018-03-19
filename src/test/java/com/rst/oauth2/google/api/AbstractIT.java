@@ -1,6 +1,6 @@
 package com.rst.oauth2.google.api;
 
-import com.rst.oauth2.google.config.SpringBootRestApplication;
+import com.rst.oauth2.google.SpringBootRestApplication;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

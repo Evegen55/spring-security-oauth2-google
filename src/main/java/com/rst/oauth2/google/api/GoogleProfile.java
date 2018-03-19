@@ -1,4 +1,4 @@
-package com.rst.oauth2.google.security;
+package com.rst.oauth2.google.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

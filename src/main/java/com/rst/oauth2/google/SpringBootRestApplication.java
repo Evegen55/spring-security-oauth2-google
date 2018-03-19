@@ -1,4 +1,4 @@
-package com.rst.oauth2.google.config;
+package com.rst.oauth2.google;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
