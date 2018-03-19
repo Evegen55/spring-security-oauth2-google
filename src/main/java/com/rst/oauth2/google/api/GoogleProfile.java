@@ -2,6 +2,9 @@ package com.rst.oauth2.google.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ *
+ */
 public class GoogleProfile {
     private String id;
     private String email;
